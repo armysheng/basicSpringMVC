@@ -14,6 +14,6 @@ import java.util.List;
 public class DemoDaoImpl extends BaseDaoImpl<Demo> implements DemoDao {
     @Override
     public List<Demo> list() {
-        return find("select * from demo");
+        return find("from Demo");
     }
 }

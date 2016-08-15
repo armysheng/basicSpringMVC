@@ -5,6 +5,7 @@ import com.cmb.ccd.mrtest.demo.entity.Demo;
 import com.cmb.ccd.mrtest.demo.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,7 +16,9 @@ import java.util.List;
 public class DemoServiceImpl implements DemoService {
     @Autowired
     DemoDao demoDao;
+
     @Override
+    @Transactional
     public List<Demo> list() {
         return demoDao.list();
     }

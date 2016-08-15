@@ -4,6 +4,7 @@ import com.cmb.ccd.mrtest.demo.entity.Demo;
 import com.cmb.ccd.mrtest.demo.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -18,16 +19,16 @@ public class DemoContoller {
     @Autowired
     DemoService demoService;
 
-    @RequestMapping("index")
+    @RequestMapping("404")
     public String gotoIndex(){
-        return "/index.jsp";
+        return "/jsp/index.jsp";
     }
 
 
     @RequestMapping("list")
-    public List<Demo> listDemos(){
-
+    public String  listDemos(Model model){
         List<Demo> demoList = demoService.list();
-        return demoList;
+        model.addAttribute("list",demoList);
+        return "/jsp/list.jsp";
     }
 }
